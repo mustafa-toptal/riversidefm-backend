@@ -28,8 +28,8 @@ app.get("/getTranscriptionById/:id", getTranscription);
 
 app.delete("/deleteJob/:id", deleteTranscription);
 
-// app.get("/token", (req, res) => {
-//   const data = Buffer.from("mustafa ali");
-//   const token = data.toString("base64");
-//   res.status(400).send({ decode: token, encode: decodeToken(token) });
-// });
+app.get("/token", (req, res) => {
+  const data = Buffer.from("mustafa ali");
+  const token = data.toString("base64");
+  res.status(400).send({ decode: token, encode: decodeToken(token) });
+});

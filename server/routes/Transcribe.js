@@ -47,7 +47,7 @@ const transcribe = (req, res) => {
       //     // }
       //   });
 
-      res.send({ id: eventName });
+      // res.send({ id: eventName });
     }
   } catch (error) {
     res.status(400).send({ error: "Bad request" });

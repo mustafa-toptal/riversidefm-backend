@@ -28,23 +28,23 @@ const transcribe = (req, res) => {
       console.log("eventName: ", eventName);
 
       res.send({ id: eventName });
-      service
-        .post(``, form, token)
-        .then((response) => {
-          console.log("response.data.id: ", response.data.id);
-          io.emit(eventName, response.data.id);
-        })
-        .catch((error) => {
-          io.emit(eventName, "error");
-          // if (error && error.response) {
-          //   res.status(error.response.status).send({
-          //     error: error.response.data,
-          //     status: error.response.status,
-          //   });
-          // } else {
-          //   res.status(400).send({ error: "Bad Request" });
-          // }
-        });
+      // service
+      //   .post(``, form, token)
+      //   .then((response) => {
+      //     console.log("response.data.id: ", response.data.id);
+      //     io.emit(eventName, response.data.id);
+      //   })
+      //   .catch((error) => {
+      //     io.emit(eventName, "error");
+      //     // if (error && error.response) {
+      //     //   res.status(error.response.status).send({
+      //     //     error: error.response.data,
+      //     //     status: error.response.status,
+      //     //   });
+      //     // } else {
+      //     //   res.status(400).send({ error: "Bad Request" });
+      //     // }
+      //   });
     }
   } catch (error) {
     res.status(400).send({ error: "Bad request" });

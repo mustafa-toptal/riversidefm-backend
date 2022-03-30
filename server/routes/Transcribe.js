@@ -26,8 +26,6 @@ const transcribe = (req, res) => {
       form.append("options", JSON.stringify(config));
       const eventName = uuidv4();
       console.log("eventName: ", eventName);
-
-      res.send({ id: eventName });
       service
         .post(``, form, token)
         .then((response) => {
@@ -45,6 +43,8 @@ const transcribe = (req, res) => {
           //   res.status(400).send({ error: "Bad Request" });
           // }
         });
+
+      res.send({ id: eventName });
     }
   } catch (error) {
     res.status(400).send({ error: "Bad request" });

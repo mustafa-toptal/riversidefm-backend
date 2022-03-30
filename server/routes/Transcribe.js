@@ -25,28 +25,26 @@ const transcribe = (req, res) => {
       );
       form.append("options", JSON.stringify(config));
       const eventName = uuidv4();
-      // console.log("eventName: ", eventName);
+      console.log("eventName: ", eventName);
 
+      res.send({ id: eventName });
       service
         .post(``, form, token)
         .then((response) => {
-          res.send({ id: response.data.id });
-
           console.log("response.data.id: ", response.data.id);
-          // io.emit(eventName, response.data.id);
+          io.emit(eventName, response.data.id);
         })
         .catch((error) => {
-          // io.emit(eventName, "error");
-          if (error && error.response) {
-            res.status(error.response.status).send({
-              error: error.response.data,
-              status: error.response.status,
-            });
-          } else {
-            res.status(400).send({ error: "Bad Request" });
-          }
+          io.emit(eventName, "error");
+          // if (error && error.response) {
+          //   res.status(error.response.status).send({
+          //     error: error.response.data,
+          //     status: error.response.status,
+          //   });
+          // } else {
+          //   res.status(400).send({ error: "Bad Request" });
+          // }
         });
-      // res.send({ id: eventName });
     }
   } catch (error) {
     res.status(400).send({ error: "Bad request" });
